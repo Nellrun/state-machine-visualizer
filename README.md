@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# State Machine Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+State Machine Visualizer is a React application that allows you to visualize state machines defined in YAML. It features a code editor with YAML syntax highlighting and dynamically updates the state machine graph as you edit the YAML content.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **YAML Syntax Highlighting**: Edit your state machine definitions with a Monaco Editor that provides YAML syntax highlighting.
+- **Real-Time Graph Rendering**: Automatically updates the state machine graph as you edit the YAML content.
+- **Simple and Intuitive UI**: A clean and easy-to-use interface to visualize complex state machines.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js (v12 or later)
+- npm (v6 or later)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/state-machine-visualizer.git
+   cd state-machine-visualizer
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running the Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+2. Open your browser and navigate to `http://localhost:3000` to see the application in action.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Edit the YAML content in the editor on the left side of the screen.
+2. The state machine graph on the right side will automatically update to reflect the changes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Example YAML
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Here is an example of a state machine definition in YAML:
 
-## Learn More
+```yaml
+state_machine:
+  states:
+    - name: created
+      events:
+        - name: add_data
+          next_state: in_progress
+          handlers:
+            success: operation_handle_data
+            failure: operation_rejected
+    - name: in_progress
+      events:
+        - name: completed
+          next_state: succeeded
+          handlers:
+            success: operation_completed
+            failure: operation_rejected
+        - name: error
+          next_state: fail
+          handlers:
+            success: operation_ended_with_error
+            failure: operation_rejected
+    - name: succeeded
+      events: []
+    - name: fail
+      events: []
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Built With
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - The code editor that powers VS Code
+- [Mermaid](https://mermaid-js.github.io/mermaid/#/) - Generation of diagrams and flowcharts from text in a similar manner as markdown
+- [js-yaml](https://github.com/nodeca/js-yaml) - YAML 1.2 parser and serializer
 
-### Code Splitting
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions are welcome! Please open an issue or submit a pull request if you have any suggestions or improvements.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Thanks to the developers of React, Monaco Editor, Mermaid, and js-yaml for their fantastic libraries.
