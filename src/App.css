@@ -1,0 +1,22 @@
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.mermaid {
+  width: 100%;
+}
